@@ -3,7 +3,7 @@ import pandas as pd
 import streamlit as st 
 import joblib
 
-regressor=joblib.load('/kaggle/working/RestaurentRatingWithPipeline.pkl')
+regressor=joblib.load('/kaggle/working/RestaurentPipeline.pkl')
 
 
 def welcome():
