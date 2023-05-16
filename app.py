@@ -3,17 +3,19 @@ import pandas as pd
 import streamlit as st 
 import joblib
 
-regressor=joblib.load('/kaggle/working/RestaurentRatingWithPipeline.pkl')
+regressor=joblib.load('C:\\Users\\HP\\Downloads\\Task_1\\RestaurentRatingWithPipeline.pkl')
 
 
 def welcome():
     return "Welcome All"
 
 
-def predict_RestaurentRating(Has Table booking, Has Online delivery, Price_range , Votes, Cuisines):
-      prediction=regressor.predict(pd.DataFrame({'Has Table booking':[Has Table booking], 'Has Online delivery':[Has Online delivery],
-                                             'Price range':[Price_range],'Votes':[Votes],'Cuisines':[Cuisines])
-  return  prediction
+def predict_RestaurentRating(Has_Table_booking, Has_Online_delivery, Price_range , Votes, Cuisines):
+    prediction=regressor.predict(pd.DataFrame({'Has Table booking':[Has_Table_booking], 'Has Online delivery':[Has_Online_delivery],
+                                             'Price range':[Price_range],'Votes':[Votes],'Cuisines':[Cuisines]}))
+    print(prediction)
+    return  prediction  
+  
 def main():
     st.title("BMW price prediction")
     html_temp = """
@@ -30,8 +32,8 @@ def main():
     
     result=""
     if st.button("Predict"):
-        result=predict_bmwcar(Has Table booking, Has Online delivery, Price_range , Votes, Cuisines)
-    st.success('The price is {} USD'.format(result))
+        result=predict_bmwcar(Has_Table_booking, Has_Online_delivery, Price_range , Votes, Cuisines)
+    st.success('The Restaurent Rating is {} From 5'.format(result))
     if st.button("About"):
         st.text("our app using streamlit")
         st.text("best of luck in your GP")
